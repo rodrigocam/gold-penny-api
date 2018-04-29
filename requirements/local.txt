@@ -1,0 +1,13 @@
+# Django
+django ~= 2.0
+
+# Rest framework
+djangorestframework ~= 3.8.2
+
+# Time zones support
+pytz ~= 2017.2
+
+
+psycopg2
+
+
