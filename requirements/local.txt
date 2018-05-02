@@ -4,10 +4,13 @@ django ~= 2.0
 # Rest framework
 djangorestframework ~= 3.8.2
 
+#Debug toolbar
+django-debug-toolbar==1.9.1
+
 # Time zones support
 pytz ~= 2017.2
 
-
+#Postgres engine
 psycopg2
 
 
