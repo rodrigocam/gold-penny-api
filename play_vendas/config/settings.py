@@ -26,7 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'event'
+    'rest_framework.authtoken',
+    'events',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -39,7 +41,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'play_vendas.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -57,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'play_vendas.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
@@ -92,6 +94,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+# Rest framework authentication
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
@@ -131,4 +144,3 @@ if DEBUG:
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ]
     SHOW_TOOLBAR_CALLBACK = True
-

@@ -3,14 +3,14 @@ from django.urls import include, path
 from django.conf import settings
 
 from rest_framework import routers
-from event import views
+from events import views
 
 router = routers.DefaultRouter()
 router.register(r'events', views.EventViewSet)
 router.register(r'products', views.ProductViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
 

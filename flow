@@ -1,0 +1,7 @@
+(novo evento)
+	(recebe cardápio)
+	(cria um usuário com o nome do evento e uma senha [django-admin])
+	(coloca o token gerado nos tablets)
+
+(encerrou evento)
+	(~)	
