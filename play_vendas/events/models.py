@@ -32,10 +32,10 @@ class Event(models.Model):
     products are going to be sold) on the system.
     """
     
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        related_name='events',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        primary_key=True,
     )
 
     name = models.CharField(
