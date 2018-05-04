@@ -14,10 +14,10 @@ class EventViewSet(viewsets.ModelViewSet):
         serializer = EventSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data)
 
-    def retrieve(self, request):
-        queryset = Event.objects.all()
+    def retrieve(self, request, pk=None):
+        queryset = Event.objects.filter(user=request.user)
         event = get_object_or_404(queryset, pk=pk)
-        serializer = EventSerializer(event)
+        serializer = EventSerializer(event, context={'request': request})
         return Response(serializer.data)
 
     @action(methods=['post'], detail=True)
@@ -43,7 +43,7 @@ class ProductViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
-        queryset = Product.objects.all()
+        queryset = Product.objects.filter(request=request.user)
         product = get_object_or_404(queryset, pk=pk)
         serializer = ProductSerializer(product)
         return Response(serializer.data)
