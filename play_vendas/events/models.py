@@ -9,21 +9,29 @@ class Product(models.Model):
     can be anything that will be sold.
     """
 
+    event = models.ForeignKey(
+        'Event',
+        related_name='products',
+        on_delete=models.CASCADE,
+    )
+
     name = models.CharField(
         _('Name'),
         max_length=70,
-        blank=False
+        blank=False,
     )
 
     price = models.FloatField(
         _('Price'),
     )
 
-    event = models.ForeignKey(
-        'Event',
-        related_name='products',
-        on_delete=models.CASCADE
+    total_sold = models.BigIntegerField(
+        _('Total Sold'),
+        default=0,
     )
+
+    def __str__(self):
+        return self.name
 
 
 class Event(models.Model):
@@ -31,7 +39,7 @@ class Event(models.Model):
     Representation of a event (an occasion where
     products are going to be sold) on the system.
     """
-    
+
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -50,4 +58,8 @@ class Event(models.Model):
 
     total_earnings = models.FloatField(
         _('Total Earnings'),
+        default=0,
     )
+
+    def __str__(self):
+        return self.name
