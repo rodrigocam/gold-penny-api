@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
 from .models import Event, Product
-from .serializers import EventSerializer, ProductSerializer
+from .serializers import EventSerializer, ProductSerializer, SellSerializer
+from .utils import sell_product
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -47,3 +48,18 @@ class ProductViewSet(viewsets.ViewSet):
         product = get_object_or_404(queryset, pk=pk)
         serializer = ProductSerializer(product)
         return Response(serializer.data)
+
+    @action(methods=['post'], detail=False)
+    def sell(self, request):
+        print(request.data)
+        serializer = SellSerializer(data=request.data)
+        if serializer.is_valid():
+            orders = serializer.data['orders']
+            print("YEAY")
+            print(orders)
+            for order in orders:
+                sell_product(request.user, order['id'], order['amount'])
+        
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
