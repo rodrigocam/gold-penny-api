@@ -13,4 +13,5 @@ pytz ~= 2017.2
 #Postgres engine
 psycopg2
 
-
+#Jnja2 templates
+Jinja2==2.10
