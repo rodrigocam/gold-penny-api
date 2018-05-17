@@ -1,8 +1,36 @@
-.menu-nav{
-    margin-top: 0;
-    background-color: black;
+body{
+    background-color: #3e517a;
+    font-family: Lato;
 }
 
-.menu-nav h1{
-    color: red;
+.content, .event-name{
+    text-align: center;
+    color: #ffd400;
+}
+.content, .event-date{
+    text-align: center;
+    color: #eadeda;
+}
+
+.content, .event-earnings{
+    margin-top: 15vh;
+    text-align: center;
+}
+
+.content, .event-earnings, h3{
+    color: #ffd400;
+}
+
+.content, .event-earnings, p{
+    color: #eadeda;
+}
+
+.content, .products-sold{
+    margin-top: 10vh;
+    text-align: center;
+    list-style-type: none;
+}
+
+footer{
+    background-color: #eadeda;
 }

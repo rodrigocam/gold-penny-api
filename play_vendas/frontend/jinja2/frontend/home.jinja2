@@ -1,4 +1,15 @@
 {% extends "frontend/base.jinja2" %}
 {% block content %}
-    <p>Insert full content here</p>
+    <h1 class='event-name'>{{ event }}</h1>
+    <p class='event-date'> 16/05/2018 </p>
+    <div class='event-earnings'>
+        <h3>Total Vendido</h3>
+        <p>R$ {{ total_earnings }}</p>
+    </div>
+    <div class='products-sold'>
+        <h3>Produtos Vendidos</h3>
+        {% for product in products %}
+            <p> {{ product }} - 55 un</p>
+        {% endfor %}
+    </div>
 {% endblock %}
