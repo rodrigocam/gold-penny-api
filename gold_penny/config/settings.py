@@ -141,4 +141,4 @@ STATICFILES_DIRS = [
 ]
 
 #Django login
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'index'
