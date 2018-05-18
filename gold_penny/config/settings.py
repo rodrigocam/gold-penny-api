@@ -29,8 +29,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'events',
-    'accounts',
-    'frontend',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -80,9 +79,9 @@ DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'HOST': 'postgres',
-            'NAME': 'playvendas',
-            'USER': 'playvendas',
-            'PASSWORD': 'playvendas123',
+            'NAME': 'goldpenny',
+            'USER': 'goldpenny',
+            'PASSWORD': 'goldpenny123',
         },
     }
 
@@ -140,3 +139,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend', 'static'),
     '/var/www/static/',
 ]
+
+#Django login
+LOGIN_REDIRECT_URL = 'home'

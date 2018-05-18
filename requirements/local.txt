@@ -15,3 +15,6 @@ psycopg2
 
 #Jnja2 templates
 Jinja2==2.10
+
+#Cors
+django-cors-headers==2.2.0

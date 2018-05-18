@@ -1,0 +1,8 @@
+{% extends "users/base.jinja2" %}
+{% block content %}
+    <form action="http://127.0.0.1/login/" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        {{ form }}
+        <input type="submit" value="Enviar"/>
+    </form>
+{% endblock %}
