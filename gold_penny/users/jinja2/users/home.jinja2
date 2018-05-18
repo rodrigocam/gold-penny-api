@@ -1,7 +1,7 @@
 {% extends "users/base.jinja2" %}
 {% block content %}
     <h1 class='event-name'>{{ event }}</h1>
-    <p class='event-date'> {{ event.date }} </p>
+    <p class='event-date'> {{ event.date.strftime('%d/%m/%Y') }} </p>
     <div class='event-earnings'>
         <h3>Total Vendido</h3>
         <p>R$ {{ total_earnings }}</p>
