@@ -140,5 +140,5 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 
-#Django login
+# Django login
 LOGIN_REDIRECT_URL = 'index'

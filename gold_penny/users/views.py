@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 
+from babel.numbers import format_currency
 from events.models import Event, Product
 from users.forms import LoginForm
 
@@ -17,6 +18,8 @@ def index(request):
             products_sold = Product.objects.filter(event=event)
             for product in products_sold:
                 total_earnings += product.price * product.total_sold
+            
+            total_earnings = format_currency(total_earnings, 'BRL', locale='pt_BR')
 
         ctx = {
             'event': event,
