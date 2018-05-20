@@ -6,12 +6,24 @@
     height: 60px;
 }
 
-.logo{
+.navbar-brand{
     font-family: 'Kaushan Script', cursive;
     color: gold;
+    padding-top: 4vh;
     padding-left: 5vw;
 }
 
+.navbar-brand:active,
+.navbar-brand:hover,
+.navbar-brand:visited{
+    color: gold;
+}
+
+.test{
+    padding-top: 3vh;
+    margin-left: 80vw;
+    color: gold;
+}
 
 body{
     background-color: whitesmoke;
