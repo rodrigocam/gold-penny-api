@@ -8,10 +8,12 @@
             <div class="form-group">
                 <label>Usuário:</label>
                 <p>{{form.username}}</p>
+                {{form.username.errors}}
             </div>
             <div class="form-group">
                 <label>Senha:</label>
                 <p>{{form.password}}</p>
+                {{form.password.errors}}
             </div>
             <div class="checkbox">
                 <label><input type="checkbox">Lembrar</label>
