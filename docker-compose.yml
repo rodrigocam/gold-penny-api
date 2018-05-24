@@ -1,24 +1,24 @@
 version: '3'
 
 services:
-  api:
-    container_name: api
+  django:
+    container_name: django
     build: .
     command: sleep 10
     command: /runserver.sh
-    working_dir: /play_vendas
+    working_dir: /gold_penny
     ports:
       - 80:80
     depends_on:
       - postgres
     volumes:
-      - ./play_vendas:/play_vendas
+      - ./gold_penny:/gold_penny
   
   postgres:
     image: postgres
     environment:
-        POSTGRES_PASSWORD: playvendas123
-        POSTGRES_DB: playvendas
-        POSTGRES_USER: playvendas
+        POSTGRES_PASSWORD: goldpenny123
+        POSTGRES_DB: goldpenny
+        POSTGRES_USER: goldpenny
     ports:
-        - "5432:5432"
+        - "5433:5433"

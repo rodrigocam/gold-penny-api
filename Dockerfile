@@ -9,7 +9,6 @@ COPY ./requirements /app/requirements
 
 RUN pip install --upgrade pip
 RUN pip install -r /app/requirements/local.txt
-RUN apt-get install libmysqlclient-dev
 
 COPY ./runserver.sh /runserver.sh
 RUN sed -i 's/\r//' /runserver.sh
