@@ -5,7 +5,7 @@ sudo: required
 services:
   - docker
 
-before_script:
+script:
   - sudo docker-compose up -d --build
 
 after_success:
