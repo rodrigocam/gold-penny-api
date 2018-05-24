@@ -6,7 +6,6 @@ services:
   - docker
 
 before_script:
-  - sudo service psql stop
   - sudo docker-compose up -d --build
 
 after_success:
