@@ -22,4 +22,8 @@ services:
     env_file:
       - ./.envs/.postgres
     ports:
+<<<<<<< HEAD
       - "5433:5433"
+=======
+      - "5432:5432"
+>>>>>>> c20651c4de68c8d3b27a271f2a15055cd542eb90
