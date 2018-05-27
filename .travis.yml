@@ -1,12 +1,12 @@
-language: python
-
-sudo: required
+sudo: true
 
 services:
   - docker
 
 addons:
+
   apt:
+    update: true
     packages:
       - sshpass
 
