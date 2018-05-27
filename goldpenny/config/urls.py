@@ -9,5 +9,4 @@ urlpatterns = [
     path('', include(users_urlpatterns)),
     path('api/v1/', include(router_v1.urls)),
     path('admin/', admin.site.urls),
-    path('test/CD/', include(router_v1.url)),
 ]
