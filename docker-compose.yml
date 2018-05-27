@@ -6,19 +6,20 @@ services:
     build: .
     command: sleep 10
     command: /runserver.sh
-    working_dir: /gold_penny
+    working_dir: /goldpenny
     ports:
       - 80:80
     depends_on:
       - postgres
     volumes:
-      - ./gold_penny:/gold_penny
+      - ./goldpenny:/goldpenny
+    env_file:
+      - ./.envs/.django
+      - ./.envs/.postgres
   
   postgres:
     image: postgres
-    environment:
-        POSTGRES_PASSWORD: goldpenny123
-        POSTGRES_DB: goldpenny
-        POSTGRES_USER: goldpenny
+    env_file:
+      - ./.envs/.postgres
     ports:
-        - "5433:5433"
+      - "5432:5432"

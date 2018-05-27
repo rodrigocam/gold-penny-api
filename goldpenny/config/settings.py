@@ -1,36 +1,52 @@
+"""
+Base settings to build other settings files upon.
+"""
+
+import environ
 import os
+
+ROOT_DIR = environ.Path(__file__) - 2  # (goldpenny/config/settings.py - 2 = goldpenny/)
+APPS_DIR = ROOT_DIR.path('goldpenny')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+env = environ.Env()
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
+READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=False)
+if READ_DOT_ENV_FILE:
+    # OS environment variables take precedence over variables from .env
+    env.read_env(str(ROOT_DIR.path('.env')))
+
+DEBUG = env.bool('DJANGO_DEBUG', False)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dpe7910td5ku%0v#$b8=dqtqa=5b-$h-6oq11)@(l3u9jh51(6'
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='qwKHBif4hJ9OkZUTrmwtcAhq2n9aGysshEyTDoMcFSv1RjIfRzjoeWBkiwn1XW6q')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['localhost'])
 
-ALLOWED_HOSTS = []
-
-
-# Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
+
+THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+]
+
+LOCAL_APPS = [
     'events',
     'users',
 ]
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,16 +90,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'HOST': 'postgres',
-            'NAME': 'goldpenny',
-            'USER': 'goldpenny',
-            'PASSWORD': 'goldpenny123',
-        },
-    }
+    'default': env.db('DATABASE_URL', default='postgres:///goldpenny'),
+}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # Password validation
