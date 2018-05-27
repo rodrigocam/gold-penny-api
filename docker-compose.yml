@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  django:
+    container_name: django
+    build: .
+    command: sleep 10
+    command: /runserver.sh
+    working_dir: /goldpenny
+    ports:
+      - 80:80
+    depends_on:
+      - postgres
+    volumes:
+      - ./goldpenny:/goldpenny
+    env_file:
+      - ./.envs/.django
+      - ./.envs/.postgres
+  
+  postgres:
+    image: postgres
+    env_file:
+      - ./.envs/.postgres
+    ports:
+      - "5432:5432"
