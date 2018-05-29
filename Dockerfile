@@ -13,10 +13,4 @@ RUN pip install -r /app/requirements/local.txt
 COPY ./runserver.sh /runserver.sh
 RUN sed -i 's/\r//' /runserver.sh
 
-COPY ./entrypoint /entrypoint
-RUN sed -i 's/\r//' /entrypoint
-RUN chmod +x /entrypoint
-
 RUN chmod +x /runserver.sh
-
-ENTRYPOINT ["/entrypoint"]

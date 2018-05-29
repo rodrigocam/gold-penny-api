@@ -102,3 +102,6 @@ ENV/
 
 #vscode
 .vscode
+
+#static files
+collect/
