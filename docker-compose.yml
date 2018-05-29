@@ -22,4 +22,4 @@ services:
     env_file:
       - ./.envs/.postgres
     ports:
-      - "5433:5433"
+      - "5432:5432"
