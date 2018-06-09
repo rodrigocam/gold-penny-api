@@ -19,7 +19,7 @@
     color: gold;
 }
 
-.test{
+.logout-btn{
     padding-top: 3vh;
     margin-left: 80vw;
     color: gold;
@@ -46,10 +46,30 @@ body{
     text-align: center;
 }
 
-#products .table-responsive{
+#products .table-condensed{
     margin-top: 5vh;
+    text-align: left;
 }
 
 footer{
     display: none;
+}
+
+
+@media only screen and (min-width: 800px){
+    .navbar-brand{
+        padding-top: 3.5vh;
+        padding-left: 4vw;
+    }
+
+    .logout-btn{
+        padding-top: 2vh;
+        margin-left: 90vw;
+    }
+
+    .panel{
+        margin: auto;
+        width: 65%;
+        margin-bottom: 2%;
+    }
 }

@@ -51,12 +51,9 @@ class ProductViewSet(viewsets.ViewSet):
 
     @action(methods=['post'], detail=False)
     def sell(self, request):
-        print(request.data)
         serializer = SellSerializer(data=request.data)
         if serializer.is_valid():
             orders = serializer.data['orders']
-            print("YEAY")
-            print(orders)
             for order in orders:
                 sell_product(request.user, order['id'], order['amount'])
         
