@@ -1,3 +1,9 @@
+#Gunicorn
+gunicorn==19.8.1
+
+#Whitenoise
+whitenoise==3.3.1
+
 # Django
 django ~= 2.0
 
