@@ -57,6 +57,6 @@ class ProductViewSet(viewsets.ViewSet):
             for order in orders:
                 sell_product(request.user, order['id'], order['amount'])
         
-            return Response(status=status.HTTP_200_OK)
+            return Response('Successfully sold', status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
