@@ -55,6 +55,7 @@ class ProductViewSet(viewsets.ViewSet):
         if serializer.is_valid():
             orders = serializer.data['orders']
             for order in orders:
+                print('ENTROU NO FOR')
                 sell_product(request.user, order['id'], order['amount'])
         
             return Response('Successfully sold', status=status.HTTP_200_OK)

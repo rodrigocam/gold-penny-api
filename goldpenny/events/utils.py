@@ -3,6 +3,7 @@ from .models import Product, Event
 
 
 def sell_product(user, product_id, amount):
+    print('SELLING')
     with transaction.atomic():
         event = Event.objects.filter(user=user)[0]
         print(f'EVENT {event}')
